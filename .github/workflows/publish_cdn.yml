@@ -1,0 +1,31 @@
+name: Publish on CDN
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "web/resources/logos/**"
+
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        description: Environment
+        options: 
+        - dev
+        - uat
+        - prod
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+
+jobs:
+  release_dev:
+    uses: ./.github/workflows/call_publish_cdn.yml
+    name: '[Dev] Onboarding-cdc ms Release'
+    if: ${{ (startsWith(github.ref_name, 'releases/') != true && inputs.env == null) || inputs.env == 'dev' }}
+    secrets: inherit
+    with:
+      environment: dev
+      environment_short: d
