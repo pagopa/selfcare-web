@@ -16,10 +16,7 @@ on:
         - dev
         - uat
         - prod
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-
+        
 jobs:
   release_dev:
     uses: ./.github/workflows/call_publish_cdn.yml
