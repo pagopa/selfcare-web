@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "web/resources/logos/**"
+      - "web/resources/**"
 
   workflow_dispatch:
     inputs:
