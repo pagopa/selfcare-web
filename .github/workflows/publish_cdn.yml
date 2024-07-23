@@ -40,7 +40,7 @@ jobs:
   release_prod:
     uses: ./.github/workflows/call_publish_cdn.yml
     name: '[PROD] Onboarding-cdc ms Release'
-    if: ${{ inputs.env == 'prod' }}
+    if: ${{ (inputs.env == null) || inputs.env == 'prod' }}
     secrets: inherit
     with:
       environment: prod
