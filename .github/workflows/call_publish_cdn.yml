@@ -20,13 +20,14 @@ on:
 
 env:
   STORAGE_ACCOUNT_NAME: "selc${{ inputs.environment_short }}checkoutsa"
+  # STORAGE_ACCOUNT_KEY: "{{ inputs.storage_account_key }}"
   STORAGE_ACCOUNT_RG: "selc-${{ inputs.environment_short }}-checkout-fe-rg"
   CDN_PROFILE_NAME: "selc-${{ inputs.environment_short }}-checkout-cdn-profile"
   CDN_ENDPOINT: "selc-${{ inputs.environment_short }}-checkout-cdn-endpoint"
   CDN_RESOURCE_GROUP: "selc-${{ inputs.environment_short }}-checkout-fe-rg"
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+# concurrency:
+#   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
 
 jobs:
 
@@ -65,6 +66,7 @@ jobs:
 
             az storage copy \
               --account-name "$STORAGE_ACCOUNT_NAME" \
+              --account-key ${{ secrets.STORAGE_ACCOUNT_KEY }} \
               --destination-container $container \
               --source './web/resources/logos/*' \
               --destination resources/logos/
