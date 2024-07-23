@@ -58,10 +58,9 @@ jobs:
             az storage blob sync \
               --account-name "$STORAGE_ACCOUNT_NAME" \
               --account-key ${{ secrets.STORAGE_ACCOUNT_KEY }} \
-              --destination-container $container \
+              --container  $container \
               --source './web/resources/logos/*' \
-              --destination 'resources/logos/' \
-              --recursive
+              --destination 'resources/logos/' 
      
       - name: Purge CDN endpoint
         uses: azure/CLI@b0e31ae20280d899279f14c36e877b4c6916e2d3
