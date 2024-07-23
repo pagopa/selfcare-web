@@ -55,12 +55,12 @@ jobs:
             # workaround to escape dollar sign
             container='$web'
 
-            az storage blob sync \
+            az storage copy \
               --account-name "$STORAGE_ACCOUNT_NAME" \
               --account-key ${{ secrets.STORAGE_ACCOUNT_KEY }} \
-              --container  $container \
-              --source './web/resources/logos/*' \
-              --destination 'resources/logos/' 
+              --destination-container $container \
+              --source './web/resources/logos/*' \:wq
+              --recursive
      
       - name: Purge CDN endpoint
         uses: azure/CLI@b0e31ae20280d899279f14c36e877b4c6916e2d3
