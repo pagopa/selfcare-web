@@ -59,7 +59,7 @@ jobs:
               --account-name "$STORAGE_ACCOUNT_NAME" \
               --account-key ${{ secrets.STORAGE_ACCOUNT_KEY }} \
               --destination-container $container \
-              --source './web/resources/logos/*' \:wq
+              --source './web/resources/logos/*' \
               --recursive
      
       - name: Purge CDN endpoint
