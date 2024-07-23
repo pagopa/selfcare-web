@@ -70,7 +70,7 @@ jobs:
               --content-paths '/*' \
               --profile-name "$CDN_PROFILE_NAME" \
               --name "$CDN_ENDPOINT" \
-              --content-paths "/resources/logos/*" \
+              --content-paths "/media/*" \
               --resource-group "$CDN_RESOURCE_GROUP"
 
       - name: Azure Logout
