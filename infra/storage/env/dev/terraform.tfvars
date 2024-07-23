@@ -10,3 +10,7 @@ tags = {
   CostCenter  = "TS310 - PAGAMENTI & SERVIZI"
 }
 
+key_vault = {
+  resource_group_name = "selc-d-sec-rg"
+  name                = "selc-d-kv"
+}

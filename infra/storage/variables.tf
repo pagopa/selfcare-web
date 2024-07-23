@@ -23,3 +23,12 @@ variable "env_short" {
 variable "tags" {
   type = map(any)
 }
+
+
+variable "key_vault" {
+  description = "KeyVault data to get secrets values from"
+  type = object({
+    resource_group_name = string
+    name                = string
+  })
+}
