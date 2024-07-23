@@ -21,9 +21,27 @@ on:
 jobs:
   release_dev:
     uses: ./.github/workflows/call_publish_cdn.yml
-    name: '[Dev] Onboarding-cdc ms Release'
-    if: ${{ (startsWith(github.ref_name, 'releases/') != true && inputs.env == null) || inputs.env == 'dev' }}
+    name: '[DEV] Onboarding-cdc ms Release'
+    if: ${{ inputs.env == 'dev' }}
     secrets: inherit
     with:
       environment: dev
       environment_short: d
+
+  release_uat:
+    uses: ./.github/workflows/call_publish_cdn.yml
+    name: '[UAT] Onboarding-cdc ms Release'
+    if: ${{ inputs.env == 'uat' }}
+    secrets: inherit
+    with:
+      environment: uat
+      environment_short: u
+
+  release_prod:
+    uses: ./.github/workflows/call_publish_cdn.yml
+    name: '[PROD] Onboarding-cdc ms Release'
+    if: ${{ inputs.env == 'prod' }}
+    secrets: inherit
+    with:
+      environment: prod
+      environment_short: p
