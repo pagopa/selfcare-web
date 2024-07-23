@@ -12,6 +12,7 @@ on:
       env:
         type: choice
         description: Environment
+        default: 'prod'
         options: 
         - dev
         - uat
